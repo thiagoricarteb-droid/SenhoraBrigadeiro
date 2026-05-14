@@ -3,23 +3,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect, ReactNode } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'motion/react';
 import { useInView } from 'react-intersection-observer';
 import { 
-  Cookie, 
-  MapPin, 
   Instagram, 
   Send as WhatsApp, 
   Menu, 
-  X,
-  ChevronDown,
-  ArrowRight,
-  ExternalLink
+  X
 } from 'lucide-react';
 
 // Animation wrapper component
-const FadeIn = ({ children, className = "" }: { children: ReactNode, className?: string }) => {
+const FadeIn = ({ children, className = "" }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
@@ -49,7 +44,7 @@ const FadeIn = ({ children, className = "" }: { children: ReactNode, className?:
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const contactWhatsApp = (assunto: string) => {
+  const contactWhatsApp = (assunto) => {
     const phone = "5584994180426";
     const msg = encodeURIComponent(`Olá Areta! Vim pelo site da Senhora Brigadeiro e gostaria de saber sobre: ${assunto}.`);
     window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
@@ -329,4 +324,3 @@ export default function App() {
     </div>
   );
 }
-
